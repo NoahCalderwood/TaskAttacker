@@ -2,8 +2,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Task extends Model {}
+class Task extends Model { }
 
+// Fields and rules for Task Model
 Task.init(
   {
     id: {
@@ -16,7 +17,7 @@ Task.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    category_id : {
+    category_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
@@ -25,12 +26,12 @@ Task.init(
       }
     },
     priority_id: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-        references: {
-            model: 'priority',
-            key: 'id',
-        }
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'priority',
+        key: 'id',
+      }
     }
   },
   {
@@ -38,7 +39,7 @@ Task.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'product',
+    modelName: 'tasks',
   }
 );
 
