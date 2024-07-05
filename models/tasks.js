@@ -4,10 +4,8 @@ const sequelize = require('../config/connection');
 
 class Task extends Model {}
 
-// set up fields and rules for Product model
 Task.init(
   {
-    // define columns
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -25,6 +23,14 @@ Task.init(
         model: 'category',
         key: 'id',
       }
+    },
+    priority_id: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        references: {
+            model: 'priority',
+            key: 'id',
+        }
     }
   },
   {

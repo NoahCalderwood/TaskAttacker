@@ -1,6 +1,7 @@
 const User = require('./User');
 const Task = require('./tasks');
 const Category = require('./category');
+const Priority = require('./priority');
 
 User.hasMany(Task, {
   foreignKey: 'user_id',
@@ -11,6 +12,22 @@ Task.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
-// TODO Setup Category relations
+Category.hasMany(Task, {
 
-module.exports = { User, Task };
+});
+
+Task.belongsTo(Category, {
+
+});
+
+Task.hasOne(Priority, {
+  foreignKey: 'priority_id'
+});
+
+Priority.belongsToMany(Task, {
+  foreignKey: 'priority_id'
+});
+
+
+
+module.exports = { User, Task, Category, Priority };
