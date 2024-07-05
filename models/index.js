@@ -13,11 +13,12 @@ Task.belongsTo(User, {
 });
 
 Category.hasMany(Task, {
-
+  foreignKey: 'category_id',
+  onDelete: 'CASCADE'
 });
 
 Task.belongsTo(Category, {
-
+  foreignKey: 'category_id'
 });
 
 Task.hasOne(Priority, {
