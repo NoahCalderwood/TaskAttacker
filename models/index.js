@@ -26,7 +26,8 @@ Task.hasOne(Priority, {
 });
 
 Priority.belongsToMany(Task, {
-  foreignKey: 'priority_id'
+  foreignKey: 'priority_id',
+
 });
 
 
