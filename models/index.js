@@ -1,7 +1,6 @@
 const User = require('./User');
 const Task = require('./tasks');
 const Category = require('./category');
-const Priority = require('./priority');
 
 User.hasMany(Task, {
   foreignKey: 'user_id',
@@ -21,14 +20,4 @@ Task.belongsTo(Category, {
   foreignKey: 'category_id'
 });
 
-Task.hasOne(Priority, {
-  foreignKey: 'priority_id'
-});
-
-Priority.belongsToMany(Task, {
-  foreignKey: 'priority_id'
-});
-
-
-
-module.exports = { User, Task, Category, Priority };
+module.exports = { User, Task, Category };
