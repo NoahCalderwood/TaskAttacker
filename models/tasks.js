@@ -40,6 +40,14 @@ Task.init(
         key: 'id',
         unique: false
       }
+    },
+    due_date: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    task_time: {
+      type: DataTypes.TIME,
+      allowNull: false,
     }
   },
   {
