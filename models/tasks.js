@@ -25,12 +25,20 @@ Task.init(
         key: 'id',
       }
     },
-    priority_id: {
+    priority_name: {
+      type: DataTypes.ENUM([
+        "low",
+        "medium",
+        "high"
+      ]),
+      allowNull: false,
+    },
+    user_id: {
       type: DataTypes.INTEGER,
-      allowNull: true,
       references: {
-        model: 'priority',
+        model: 'user',
         key: 'id',
+        unique: false
       }
     }
   },

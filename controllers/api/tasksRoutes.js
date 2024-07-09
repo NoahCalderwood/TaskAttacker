@@ -5,7 +5,7 @@ const withAuth = require('../../utils/auth');
 router.get('/', withAuth, async (req, res) => {
   try {
     const taskData = await Task.findAll({
-      include: [{ model: Product }],
+      include: [{ model: User }],
     });
     res.status(200).json(taskData);
   } catch (err) {
