@@ -42,9 +42,6 @@ Task.init(
 
       },
       allowNull: false,
-    }
-
-      }
     },
     due_date: {
       type: DataTypes.DATE,
