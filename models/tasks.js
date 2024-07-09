@@ -31,7 +31,9 @@ Task.init(
       references: {
         model: 'priority',
         key: 'id',
-      }
+        unique: false
+      },
+      allowNull: false,
     }
   },
   {
