@@ -39,8 +39,19 @@ Task.init(
         model: 'user',
         key: 'id',
         unique: false
-      }
-    }
+
+      },
+      allowNull: false,
+    },
+    due_date: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    task_time: {
+      type: DataTypes.TIME,
+      allowNull: false,
+    },
+
   },
   {
     sequelize,
