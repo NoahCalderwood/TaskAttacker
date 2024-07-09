@@ -1,5 +1,4 @@
 const seedCategories = require('./category-seeds');
-const seedPriority = require('./priority-seeds');
 const seedTasks = require('./tasks-seeds');
 const seedUsers = require('./users-seeds');
 
@@ -10,9 +9,6 @@ const seedAll = async () => {
   console.log('\n----- DATABASE SYNCED -----\n');
   await seedCategories();
   console.log('\n----- CATEGORIES SEEDED -----\n');
-
-  await seedPriority();
-  console.log('\n----- PRODUCTS SEEDED -----\n');
 
   await seedTasks();
   console.log('\n----- TAGS SEEDED -----\n');
