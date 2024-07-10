@@ -51,6 +51,25 @@ Task.init(
       type: DataTypes.TIME,
       allowNull: false,
     },
+    todo_day: {
+      type: DataTypes.ENUM([
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday'
+      ]),
+      allowNull: false,
+    },
+    week_of_year: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        max: 52,
+      },
+    },
   },
   {
     sequelize,
