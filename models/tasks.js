@@ -51,7 +51,6 @@ Task.init(
       type: DataTypes.TIME,
       allowNull: false,
     },
-
   },
   {
     sequelize,
