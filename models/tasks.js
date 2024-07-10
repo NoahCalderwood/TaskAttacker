@@ -42,9 +42,6 @@ Task.init(
 
       },
       allowNull: false,
-    }
-
-      }
     },
     due_date: {
       type: DataTypes.DATE,
@@ -54,7 +51,6 @@ Task.init(
       type: DataTypes.TIME,
       allowNull: false,
     },
-
   },
   {
     sequelize,
