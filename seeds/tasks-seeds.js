@@ -6,7 +6,9 @@ const taskData = [
     category_id: 1,
     priority_name: 'low',
     due_date: '2024-07-20',
-    task_time: '17:00:00'
+    task_time: '17:00:00',
+    todo_day: 'Monday',
+    week_of_year: 5
   },
   {
     task_name: 'Clean',
@@ -14,7 +16,9 @@ const taskData = [
     category_id: 1,
     priority_name: 'medium',
     due_date: '2024-07-20',
-    task_time: '15:30:00'
+    task_time: '15:30:00',
+    todo_day: 'Tuesday',
+    week_of_year: 5
   },
   {
     task_name: 'Maintenance',
@@ -22,7 +26,9 @@ const taskData = [
     category_id: 2,
     priority_name: 'low',
     due_date: '2024-07-20',
-    task_time: '16:00:00'
+    task_time: '16:00:00',
+    todo_day: 'Wednesday',
+    week_of_year: 5
   },
   {
     task_name: 'Laundry',
@@ -30,7 +36,9 @@ const taskData = [
     category_id: 1,
     priority_name: 'high',
     due_date: '2024-07-20',
-    task_time: '18:30:00'
+    task_time: '18:30:00',
+    todo_day: 'Thursday',
+    week_of_year: 5
   },
   {
     task_name: 'Feed Pets',
@@ -38,7 +46,9 @@ const taskData = [
     category_id: 5,
     priority_name: 'medium',
     due_date: '2024-07-20',
-    task_time: '16:45:00'
+    task_time: '16:45:00',
+    todo_day: 'Friday',
+    week_of_year: 5
   },
   {
     task_name: 'Mow',
@@ -46,7 +56,9 @@ const taskData = [
     category_id: 3,
     priority_name: 'high',
     due_date: '2024-07-20',
-    task_time: '17:40:00'
+    task_time: '17:40:00',
+    todo_day: 'Saturday',
+    week_of_year: 5
   },
   {
     task_name: 'Make Dinner',
@@ -54,7 +66,9 @@ const taskData = [
     category_id: 5,
     priority_name: 'low',
     due_date: '2024-07-20',
-    task_time: '18:25:00'
+    task_time: '18:25:00',
+    todo_day: 'Monday',
+    week_of_year: 5
   },
   {
     task_name: 'Walk the dog',
@@ -62,7 +76,9 @@ const taskData = [
     category_id: 1,
     priority_name: 'high',
     due_date: '2024-07-20',
-    task_time: '19:00:00'
+    task_time: '19:00:00',
+    todo_day: 'Monday',
+    week_of_year: 5
   },
 ];
 

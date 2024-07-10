@@ -14,11 +14,11 @@
           </div>
           <div class="card-body bg-light">
             {{#each tasks as |task| }}
-            {{#if task.date == "Monday"}}
-            <p>{{task.name}}</p>
+            {{#if task.todo_day == "Monday"}}
+            <p>{{task.task_name}}</p>
             {{/if}}
             {{/each}}
-            <div id="todo-cards"></div>
+            <div id="monday-cards"></div>
           </div>
         </div>
       </div>
@@ -30,11 +30,11 @@
           </div>
           <div class="card-body bg-light">
             {{#each tasks as |task| }}
-            {{#if task.date == "Tuesday"}}
-            <p>{{task.name}}</p>
+            {{#if task.todo_day == "Tuesday"}}
+            <p>{{task.task_name}}</p>
             {{/if}}
             {{/each}}
-            <div id="in-progress-cards"></div>
+            <div id="tuesday-cards"></div>
           </div>
         </div>
         </div>
@@ -46,11 +46,11 @@
             </div>
             <div class="card-body bg-light">
             {{#each tasks as |task| }}
-            {{#if task.date == "Wednesday"}}
-            <p>{{task.name}}</p>
+            {{#if task.todo_day == "Wednesday"}}
+            <p>{{task.task_name}}</p>
             {{/if}}
             {{/each}}
-              <div id="done-cards"></div>
+              <div id="wednesday-cards"></div>
           </div>
           </div>
 
@@ -61,11 +61,11 @@
             </div>
             <div class="card-body bg-light">
             {{#each tasks as |task| }}
-            {{#if task.date == "Thursday"}}
-            <p>{{task.name}}</p>
+            {{#if task.todo_day == "Thursday"}}
+            <p>{{task.task_name}}</p>
             {{/if}}
             {{/each}}
-              <div id="done-cards"></div>
+              <div id="thursday-cards"></div>
           </div>
           </div>
 
@@ -76,11 +76,11 @@
             </div>
             <div class="card-body bg-light">
             {{#each tasks as |task| }}
-            {{#if task.date == "Friday"}}
-            <p>{{task.name}}</p>
+            {{#if task.todo_day == "Friday"}}
+            <p>{{task.task_name}}</p>
             {{/if}}
             {{/each}}
-              <div id="done-cards"></div>
+              <div id="friday-cards"></div>
           </div>
           </div>
 
@@ -91,11 +91,11 @@
             </div>
             <div class="card-body bg-light">
             {{#each tasks as |task| }}
-            {{#if task.date == "Saturday"}}
-            <p>{{task.name}}</p>
+            {{#if task.todo_day == "Saturday"}}
+            <p>{{task.task_name}}</p>
             {{/if}}
             {{/each}}
-              <div id="done-cards"></div>
+              <div id="saturday-cards"></div>
           </div>
           </div>
 
@@ -107,8 +107,8 @@
             </div>
             <div class="card-body bg-light">
             {{#each tasks as |task| }}
-            {{#if task.date == "Sunday"}}
-            <p>{{task.name}}</p>
+            {{#if task.todo_day == "Sunday"}}
+            <p>{{task.task_name}}</p>
             {{/if}}
             {{/each}}
               <div id="done-cards"></div>
