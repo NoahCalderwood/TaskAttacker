@@ -7,8 +7,8 @@ router.get('/', async (req, res) => {
     const taskData = await Task.findAll({
       include: [{ model: User }, { model: Category }],
     });
-    console.log(taskData)
     res.status(200).json(taskData);
+
 
   } catch (err) {
     console.log(err)
@@ -26,6 +26,23 @@ router.post('/', async (req, res) => {
     res.status(200).json(newTask);
   } catch (err) {
     res.status(400).json(err);
+  }
+});
+
+router.put('/:id', async (req, res) => {
+  try {
+    const taskData = await Task.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (!taskData) {
+      res.status(404).json({ message: 'No Task found with this ID' });
+      return;
+    }
+    res.status(200).json(taskData);
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
