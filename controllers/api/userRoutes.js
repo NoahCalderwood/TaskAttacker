@@ -1,6 +1,6 @@
 const router = require('express').Router();
 // Import the User model from the models folder
-const { User } = require('../../models');
+const { User, Task } = require('../../models');
 
 
 router.get('/', async (req, res) => {
@@ -30,8 +30,8 @@ router.post('/', async (req, res) => {
 // If a POST request is made to /api/users/login, the function checks to see if the user information matches the information in the database and logs the user in. If correct, the user ID and logged-in state are saved to the session within the request object.
 router.post('/login', async (req, res) => {
   try {
-    const userData = await User.findOne({ where: { email: req.body.email } });
-
+    const userData = await User.findOne({ where: { email: req.body.email }, include: [Task] });
+    console.log(userData);
     if (!userData) {
       res
         .status(400)
@@ -40,6 +40,9 @@ router.post('/login', async (req, res) => {
     }
 
     const validPassword = await userData.checkPassword(req.body.password);
+    console.log(`valid pw: ${validPassword}`);
+    console.log(`req body: ${JSON.stringify(req.body)}`);
+    console.log(`user check pw: ${userData.checkPassword(req.body.password)}`);
 
     if (!validPassword) {
       res
@@ -47,10 +50,11 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
-
+    console.log(userData);
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
+      req.session.tasks = userData.tasks;
 
       res.json({ user: userData, message: 'You are now logged in!' });
     });
