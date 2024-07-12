@@ -14,14 +14,14 @@
         <input class="form-input" type="text" id="task-name" name="task-name" />
       </div>
       <div class="form-group">
-        <label for="task-priority">Task Priority:</label>
-        <input class="form-input" type="number" id="task-priority" name="task-priority" />
+        <label for="task priority">Task Priority:</label>
+        <input class="form-input" type="number" id="task priority" name="task priority" />
       </div>
       <div class="form-group">
         <label for="task-desc">Task Description:</label>
         <textarea class="form-input" id="task-desc" name="task-desc"></textarea>
       </div>
-      <!--  Future expansion
+<!--  Future expansion
       <div class="form-group">
         <label for="task-assign">Task Assignment:</label>
         <textarea class="form-input" id="task-desc" name="task-desc"></textarea>
@@ -34,7 +34,7 @@
   </div>
 
   {{#if tasks.length}}
-  <div class="col-md-6 task-list">
+  <div class="col-md-6 project-list">
     <h3>Current Tasks:</h3>
 
     {{#each task as |tasks|}}
@@ -43,7 +43,7 @@
         <h4><a href="/task/{{task.id}}">{{tasks.task_name}}</a></h4>
       </div>
       <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{tasks.id}}">DELETE</button>
+        <button id="delete" class="btn btn-sm btn-danger" data-id="{{tasks.id}}">DELETE</button>
       </div>
     </div>
     {{/each}}
@@ -52,3 +52,4 @@
 </div>
 
 <script src="./js/profile.js"></script>
+<script src="/js/task-delete.js"></script>
