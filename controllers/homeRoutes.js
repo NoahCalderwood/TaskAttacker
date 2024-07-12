@@ -9,7 +9,10 @@ router.get('/', async (req, res) => {
     });
 
     const tasks = taskData.map((project) => project.get({ plain: true }));
-    res.render('homepage', { tasks });
+    res.render('homepage', { 
+        tasks,
+        mondayTask: tasks.filter(t => {t.todo_day === 'Monday'}) 
+    });
 });
 
 module.exports = router;

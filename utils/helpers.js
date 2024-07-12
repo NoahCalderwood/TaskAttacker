@@ -6,5 +6,12 @@ module.exports = {
   format_amount: (amount) => {
     // format large numbers with commas
     return parseInt(amount).toLocaleString();
-  }
+  },
+  check_monday: (todoDay) => {
+    if (todoDay === 'Monday') {
+      return true;
+    } else {
+      return false;
+    }
+  },
 };
