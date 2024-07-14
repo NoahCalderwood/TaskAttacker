@@ -21,7 +21,7 @@
         <label for="task-desc">Task Description:</label>
         <textarea class="form-input" id="task-desc" name="task-desc"></textarea>
       </div>
-<!--  Future expansion
+      <!--  Future expansion
       <div class="form-group">
         <label for="task-assign">Task Assignment:</label>
         <textarea class="form-input" id="task-desc" name="task-desc"></textarea>
@@ -42,8 +42,9 @@
       <div class="col-md-8">
         <h4><a href="/task/{{task.id}}">{{tasks.task_name}}</a></h4>
       </div>
-      <div class="col-md-4">
-        <button id="delete" class="btn btn-sm btn-danger" data-id="{{tasks.id}}">DELETE</button>
+      <div class="p-2 content-center">
+        <a href="/edittask/{{id}}" class="btn btn-warning">Edit Task</a>
+        <button id="delete" class="btn btn-sm btn-danger" data-id="{{tasks.id}}">Delete Task</button>
       </div>
     </div>
     {{/each}}
@@ -51,5 +52,7 @@
   {{/if}}
 </div>
 
-<script src="./js/profile.js"></script>
+<script src="/js/profile.js"></script>
+<script src="/js/task-add.js"></script>
+<script src="/js/task-edit.js"></script>
 <script src="/js/task-delete.js"></script>

@@ -14,4 +14,7 @@ module.exports = {
       return false;
     }
   },
+  display_day: (day) => {
+    day = dayjs().format('MMM DD, YYYY')
+  }
 };

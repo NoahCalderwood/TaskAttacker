@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Task, User, Category } = require('../../models');
-// const withAuth = require('../../utils/auth');
+const withAuth = require('../../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const newTask = await Task.create({
       ...req.body,
@@ -25,28 +25,32 @@ router.post('/', async (req, res) => {
 
     res.status(200).json(newTask);
   } catch (err) {
+    console.error(err)
     res.status(400).json(err);
   }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
   try {
     const taskData = await Task.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
+      task_name: req.body.task,
+      post_body: req.body.body
+    }, {
+      where: { id: req.params.id },
     });
+
     if (!taskData) {
       res.status(404).json({ message: 'No Task found with this ID' });
       return;
     }
     res.status(200).json(taskData);
   } catch (err) {
+    console.error(err)
     res.status(500).json(err);
   }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const taskData = await Task.destroy({
       where: {
@@ -62,6 +66,7 @@ router.delete('/:id', async (req, res) => {
 
     res.status(200).json(taskData);
   } catch (err) {
+    console.error(err)
     res.status(500).json(err);
   }
 });
