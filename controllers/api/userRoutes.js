@@ -2,6 +2,14 @@ const router = require('express').Router();
 // Import the User model from the models folder
 const { User, Task } = require('../../models');
 
+const mondayTasks = [];
+const tuesdayTasks = [];
+const wednesdayTasks = [];
+const thursdayTasks = [];
+const fridayTasks = [];
+const saturdayTasks = [];
+const sundayTasks = [];
+
 
 router.get('/', async (req, res) => {
   try {
@@ -66,14 +74,25 @@ router.post('/login', async (req, res) => {
     // console.log(userData);
     // console.log(users.tasks);
     // console.log(user);
-    console.log(user.tasks.map((task) => task.todo_day));
+    //console.log(user.tasks.map((task) => task.todo_day));
+
 
     taskDays = user.tasks.map((task) => task.todo_day);
+    taskName = user.tasks.map((task) => task.task_name);
+
+    groupDays(taskDays);
 
     req.session.save(() => {
       req.session.user_id = user.id;
       req.session.logged_in = true;
       req.session.tasks = user.tasks;
+      req.session.mondayTasks = mondayTasks;
+      req.session.tuesdayTasks = tuesdayTasks;
+      req.session.wednesdayTasks = wednesdayTasks;
+      req.session.thursdayTasks = thursdayTasks;
+      req.session.fridayTasks = fridayTasks;
+      req.session.saturdayTasks = saturdayTasks;
+      req.session.sundayTasks = sundayTasks;
 
       res.json({ user: userData, message: 'You are now logged in!' });
     });
@@ -82,6 +101,41 @@ router.post('/login', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+function groupDays(taskDays) {
+  for (let i = 0; i < taskDays.length; i++) {
+    switch (taskDays[i]) {
+      case 'Monday':
+        mondayTasks.push(taskName[i]);
+        break;
+      case 'Tuesday':
+        tuesdayTasks.push(taskName[i]);
+        break;
+      case 'Wednesday':
+        wednesdayTasks.push(taskName[i]);
+        break;
+      case 'Thursday':
+        thursdayTasks.push(taskName[i]);
+        break;
+      case 'Friday':
+        fridayTasks.push(taskName[i]);
+        break;
+      case 'Saturday':
+        saturdayTasks.push(taskName[i]);
+        break;
+      case 'Sunday':
+        sundayTasks.push(taskName[i]);
+        break;
+    }
+  };
+  console.log(`Monday: ${mondayTasks}`);
+  console.log(`Tuesday: ${tuesdayTasks}`);
+  console.log(`Wednesday: ${wednesdayTasks}`);
+  console.log(`Thursday: ${thursdayTasks}`);
+  console.log(`Friday: ${fridayTasks}`);
+  console.log(`Saturday: ${saturdayTasks}`);
+  console.log(`Sunday: ${sundayTasks}`);
+};
 
 // If a POST request is made to /api/users/logout, the function checks the logged_in state in the request.session object and destroys that session if logged_in is true.
 router.post('/logout', (req, res) => {
