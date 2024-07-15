@@ -65,7 +65,7 @@ Task.init(
     },
     week_of_year: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       validate: {
         max: 52,
       },
