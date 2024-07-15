@@ -1,6 +1,7 @@
 const router = require('express').Router();
 // Import the User model from the models folder
 const { User, Task } = require('../../models');
+const emailjs = require('../../config/email');
 
 const mondayTasks = [];
 const tuesdayTasks = [];
@@ -159,11 +160,25 @@ router.post('/signup', async (req, res) => {
 
     const userData = await newUser.save();
 
-    req.session.save(() => {
+    req.session.save(async () => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
       res.status(200).json(userData);
+
+      const params = {
+        name: newUser.name,
+        email: newUser.email
+      }
+      const serviceID = 'service_0d96fi5';
+      const templateID = 'welcome_form';
+      console.log({ serviceID, templateID, params })
+      try {
+        const emailResponse = await emailjs.send(serviceID, templateID, params)
+        console.log(emailResponse)
+      } catch (err) {
+        console.error(err)
+      }
     });
   } catch (err) {
     console.log(err);
