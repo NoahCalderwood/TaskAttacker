@@ -3,11 +3,15 @@
 
 <div class="container">
   <div class="text-center mb-5">
+    <div class="flex justify-center mt-10"></div>
+      <button class="btn btn-accent btn-wide modal" onclick="show_tasks_modal.showModal()">Today's Tasks</button>
 
-<a href="#" class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#myModal" onclick="getDataWithId(1)">
-    <b>Today's Tasks</b>
-</a>
-    
+      <button class="btn btn-accent btn-wide modal" onclick="add_task_modal.showModal()">Add Task</button>
+    </div>
+  </div>
+
+
+  <div>
     <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formModal">Add Task</button>
   </div>
 

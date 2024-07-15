@@ -1,16 +1,17 @@
 <!-- task modal to display the tasks for a given day -->
 
 <!-- homepage button -->
-<!-- added on lines 7-9 -->
+<!-- added on lines 7 -->
 <a href="#" class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#myModal" onclick="getDataWithId(1)">
     <b>Today's Tasks</b>
 </a>
 
 <!-- Two choices -->
 
-<!-- Choice 1 -->
+<!-- Choice 1 "show_tasks_modal" -->
+
 <script id="data-template" type="x-handlebars-template">
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="show_tasks_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -50,7 +51,7 @@
 
 <!-- Choice 2 -->
 <script id="data-template" type="x-handlebars-template">
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="show_tasks_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
