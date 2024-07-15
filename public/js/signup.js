@@ -21,6 +21,29 @@ const signupFormHandler = async (event) => {
     }
 };
 
+const welcomeMail = async (event) => {
+    try {
+        event.preventDefault();
+
+        () => {
+            email.js.init('CnSnGIZkhr_Urul33');
+        }
+
+        let params = {
+            name: document.querySelector('#username-signup').value.trim()
+        }
+
+        let serviceID = 'service_0d96fi5';
+        let templateID = 'welcome_form';
+
+        const res = await emailjs.send(serviceID, templateID, params)
+        console.log(res)
+    }
+    catch (err) {
+        console.error(err)
+    }
+}
+
 document
     .querySelector('.signup-form')
-    .addEventListener('submit', signupFormHandler);
+    .addEventListener('submit', signupFormHandler, welcomeMail);

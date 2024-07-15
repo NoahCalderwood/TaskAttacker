@@ -11,13 +11,26 @@
     <form class="form new-task-form">
       <div class="form-group">
         <label for="task-name">Task Name:</label>
-        <input class="form-input" type="text" id="task-name" name="task-name" />
+        <input class="form-input" type="text" id="task-new-name" name="task-name" />
+      </div>
+      <div>
+        <div class="form-group">
+          <label for="task-name">Task Category:</label>
+          <input class="form-input" type="text" id="task-new-category" name="task-name" />
+        </div>
       </div>
       <div class="form-group">
         <label for="task priority">Task Priority:</label>
-        <input class="form-input" type="number" id="task priority" name="task priority" />
+        {{!-- TODO Select dropdown --}}
+        <input class="form-input" type="text" id="task-new-priority" name="task priority" />
       </div>
-      <div class="form-group" id="day-checkbox">
+      <div>
+        <div class="form-group">
+          <label for="task priority">Task Due Day:</label>
+          <input class="form-input" type="date" id="task-new-priority" name="task priority" />
+        </div>
+      </div>
+      <div class="form-group" id="task-new-day">
         <label for="Monday">Monday</label>
         <input type="checkbox" class="form-input" id="Monday" name="task-desc"></input>
         <label for="Tuesday">Tuesday</label>
@@ -34,35 +47,40 @@
         <input type="checkbox" class="form-input" id="Sunday" name="task-desc"></input>
 
       </div>
-      <!--  Future expansion
+      <div class="form-group">
+        <label for="task priority">Task Due Time:</label>
+        <input class="form-input" type="time" id="task-new-time" name="task priority" />
+      </div>
+  </div>
+  <!--  Future expansion
       <div class="form-group">
         <label for="task-assign">Task Assignment:</label>
         <textarea class="form-input" id="task-desc" name="task-desc"></textarea>
       </div>
 -->
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
-      </div>
-    </form>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Create Task</button>
   </div>
+  </form>
+</div>
 
-  {{#if tasks.length}}
-  <div class="col-md-6 project-list">
-    <h3>Current Tasks:</h3>
+{{#if tasks.length}}
+<div class="col-md-6 project-list">
+  <h3>Current Tasks:</h3>
 
-    {{#each task as |tasks|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/homepage/{{task.id}}">{{tasks.task_name}}</a></h4>
-      </div>
-      <div class="p-2 content-center">
-        <a href="/task-edit/{{id}}" class="btn btn-warning">Edit Task</a>
-        <button id="delete" class="btn btn-sm btn-danger" data-id="{{tasks.id}}">Delete Task</button>
-      </div>
+  {{#each task as |tasks|}}
+  <div class="row mb-2">
+    <div class="col-md-8">
+      <h4><a href="/homepage/{{task.id}}">{{tasks.task_name}}</a></h4>
     </div>
-    {{/each}}
+    <div class="p-2 content-center">
+      <a href="/task-edit/{{id}}" class="btn btn-warning">Edit Task</a>
+      <button id="delete" class="btn btn-sm btn-danger" data-id="{{tasks.id}}">Delete Task</button>
+    </div>
   </div>
-  {{/if}}
+  {{/each}}
+</div>
+{{/if}}
 </div>
 
 <script src="/js/profile.js"></script>
