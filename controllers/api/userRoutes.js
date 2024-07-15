@@ -13,22 +13,17 @@ const sundayTasks = [];
 
 router.get('/', async (req, res) => {
   try {
-    const userData = await User.findAll()
-    res.status(200).json(userData);
+    const userData = await User.findAll({
+      attributes: { exclude: ['password'] },
+    });
+    res.json(userData);
   } catch (err) {
-    res.status(400).json(err)
+    console.log(err);
+    res.status(500).json(err);
   }
 });
 
-router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect('/homepage');
-    return;
-  }
 
-  res.render('login');
-});
 
 // If a POST request is made to /api/users, a new user is created. The user id and logged in state is saved to the session within the request object.
 router.post('/', async (req, res) => {
@@ -151,6 +146,28 @@ router.post('/logout', (req, res) => {
     });
   } else {
     res.status(404).end();
+  }
+});
+
+// Handle user signing up route
+router.post('/signup', async (req, res) => {
+  try {
+    const newUser = new User()
+    newUser.name = req.body.name;
+    newUser.email = req.body.email;
+    newUser.password = req.body.password;
+
+    const userData = await newUser.save();
+
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+
+      res.status(200).json(userData);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
   }
 });
 

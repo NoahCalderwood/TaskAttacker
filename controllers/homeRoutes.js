@@ -1,19 +1,29 @@
 const router = require('express').Router();
-const Task = require('../models/tasks');
+const { User, Task } = require('../models')
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
-    const taskData = await Task.findAll({
+    try {
+        const taskData = await Task.findAll({
+            include: [
+                {
+                    model: User,
+                    attributes: ['name'],
+                },
+            ],
+        });
 
-    }).catch((err) => {
-        res.json(err);
-    });
+        const tasks = taskData.map((task) => task.get({ plain: true }));
 
-    const tasks = taskData.map((project) => project.get({ plain: true }));
-    res.render('homepage', {
-        tasks,
-        mondayTask: tasks.filter(t => { t.todo_day === 'Monday' })
-    });
+        res.render('homepage', {
+            tasks,
+            logged_in: req.session.logged_in,
+            mondayTask: tasks.filter(t => { t.todo_day === 'Monday' })
+        });
+    } catch (err) {
+        console.error(err)
+        res.status(500).json(err);
+    }
 });
 
 // GET tasks to be rendered individually
@@ -95,7 +105,7 @@ router.get('/task-add', (req, res) => {
 });
 
 // Define task to be edited via ID
-router.get("editpost/:id", async (req, res) => {
+router.get("edittask/:id", async (req, res) => {
     try {
         const taskData = await Task.findByPk(req.params.id, {
             include: [
