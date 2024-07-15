@@ -17,7 +17,7 @@
         <label for="task priority">Task Priority:</label>
         <input class="form-input" type="number" id="task priority" name="task priority" />
       </div>
-      <div class="form-group">
+      <div class="form-group" id="day-checkbox">
         <label for="Monday">Monday</label>
         <input type="checkbox" class="form-input" id="Monday" name="task-desc"></input>
         <label for="Tuesday">Tuesday</label>
@@ -53,10 +53,10 @@
     {{#each task as |tasks|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/task/{{task.id}}">{{tasks.task_name}}</a></h4>
+        <h4><a href="/homepage/{{task.id}}">{{tasks.task_name}}</a></h4>
       </div>
       <div class="p-2 content-center">
-        <a href="/edittask/{{id}}" class="btn btn-warning">Edit Task</a>
+        <a href="/task-edit/{{id}}" class="btn btn-warning">Edit Task</a>
         <button id="delete" class="btn btn-sm btn-danger" data-id="{{tasks.id}}">Delete Task</button>
       </div>
     </div>

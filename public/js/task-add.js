@@ -8,6 +8,7 @@ const newTaskFormHandler = async (event) => {
     // const due = document.querySelector('#task-new-date);
     // const time = document.querySelector('#task-new-time);
     // const tododay = document.querySelector('#task-new-day');
+    // const week = document.querySelector('#task-new-week');
 
     if (name && category && priority) {
         const response = await fetch('/api/posts', {
