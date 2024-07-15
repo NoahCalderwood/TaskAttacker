@@ -76,9 +76,15 @@ router.post('/login', async (req, res) => {
     // console.log(user);
     //console.log(user.tasks.map((task) => task.todo_day));
 
-
+    fullTask = user.tasks.map((task) => task);
     taskDays = user.tasks.map((task) => task.todo_day);
     taskName = user.tasks.map((task) => task.task_name);
+    console.log(fullTask);
+
+    // How can we store the data for each task as an object into session?
+    // Want to grab
+    // taskObj = { taskDays, taskName };
+    // console.log(taskObj);
 
     groupDays(taskDays);
 
@@ -106,7 +112,7 @@ function groupDays(taskDays) {
   for (let i = 0; i < taskDays.length; i++) {
     switch (taskDays[i]) {
       case 'Monday':
-        mondayTasks.push(taskName[i]);
+        mondayTasks.push(JSON.stringify(fullTask[i]));
         break;
       case 'Tuesday':
         tuesdayTasks.push(taskName[i]);

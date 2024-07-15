@@ -4,6 +4,7 @@ const newFormHandler = async (event) => {
   const name = document.querySelector('#task-name').value.trim();
   const task_priority = document.querySelector('#task-priority').value.trim();
   const description = document.querySelector('#task-desc').value.trim();
+  //const mondayTask = document.querySelector('#Monday').checked;
 
   if (name && task_priority && description) {
     const response = await fetch(`/api/tasks`, {
