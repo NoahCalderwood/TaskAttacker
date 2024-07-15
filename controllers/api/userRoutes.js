@@ -10,7 +10,18 @@ router.get('/', async (req, res) => {
   } catch (err) {
     res.status(400).json(err)
   }
-})
+});
+
+router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect('/dashboard');
+    return;
+  }
+
+  res.render('login');
+});
+
 // If a POST request is made to /api/users, a new user is created. The user id and logged in state is saved to the session within the request object.
 router.post('/', async (req, res) => {
   try {
@@ -31,7 +42,7 @@ router.post('/', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email }, include: [Task] });
-    console.log(userData);
+    // console.log(userData);
     if (!userData) {
       res
         .status(400)
@@ -40,9 +51,9 @@ router.post('/login', async (req, res) => {
     }
 
     const validPassword = await userData.checkPassword(req.body.password);
-    console.log(`valid pw: ${validPassword}`);
-    console.log(`req body: ${JSON.stringify(req.body)}`);
-    console.log(`user check pw: ${userData.checkPassword(req.body.password)}`);
+    // console.log(`valid pw: ${validPassword}`);
+    // console.log(`req body: ${JSON.stringify(req.body)}`);
+    // console.log(`user check pw: ${userData.checkPassword(req.body.password)}`);
 
     if (!validPassword) {
       res
@@ -50,11 +61,19 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
-    console.log(userData);
+    const user = userData.get({plain: true})
+    
+    // console.log(userData);
+    // console.log(users.tasks);
+    // console.log(user);
+    console.log(user.tasks.map((task) => task.todo_day));
+
+    taskDays = user.tasks.map((task) => task.todo_day);
+    
     req.session.save(() => {
-      req.session.user_id = userData.id;
+      req.session.user_id = user.id;
       req.session.logged_in = true;
-      req.session.tasks = userData.tasks;
+      req.session.tasks = user.tasks;
 
       res.json({ user: userData, message: 'You are now logged in!' });
     });

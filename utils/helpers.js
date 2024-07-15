@@ -7,13 +7,6 @@ module.exports = {
     // format large numbers with commas
     return parseInt(amount).toLocaleString();
   },
-  check_monday: (todoDay) => {
-    if (todoDay === 'Monday') {
-      return true;
-    } else {
-      return false;
-    }
-  },
   display_day: (day) => {
     day = dayjs().format('MMM DD, YYYY')
   }
