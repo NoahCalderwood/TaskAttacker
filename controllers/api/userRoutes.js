@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/dashboard');
+    res.redirect('/homepage');
     return;
   }
 
@@ -61,15 +61,15 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
-    const user = userData.get({plain: true})
-    
+    const user = userData.get({ plain: true })
+
     // console.log(userData);
     // console.log(users.tasks);
     // console.log(user);
     console.log(user.tasks.map((task) => task.todo_day));
 
     taskDays = user.tasks.map((task) => task.todo_day);
-    
+
     req.session.save(() => {
       req.session.user_id = user.id;
       req.session.logged_in = true;
