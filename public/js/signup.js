@@ -46,4 +46,5 @@ const welcomeMail = async (event) => {
 
 document
     .querySelector('.signup-form')
-    .addEventListener('submit', signupFormHandler, welcomeMail);
+    .addEventListener('submit', signupFormHandler);
+// .addEventListener('submit', signupFormHandler, welcomeMail);
