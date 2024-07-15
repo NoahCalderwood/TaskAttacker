@@ -1,5 +1,4 @@
 const router = require('express').Router();
-// Import the User model from the models folder
 const { User, Task } = require('../../models');
 
 const mondayTasks = [];
@@ -9,7 +8,6 @@ const thursdayTasks = [];
 const fridayTasks = [];
 const saturdayTasks = [];
 const sundayTasks = [];
-
 
 router.get('/', async (req, res) => {
   try {
@@ -22,8 +20,6 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-
 
 // If a POST request is made to /api/users, a new user is created. The user id and logged in state is saved to the session within the request object.
 router.post('/', async (req, res) => {
@@ -110,22 +106,22 @@ function groupDays(taskDays) {
         mondayTasks.push(JSON.stringify(fullTask[i]));
         break;
       case 'Tuesday':
-        tuesdayTasks.push(taskName[i]);
+        tuesdayTasks.push(JSON.stringify(fullTask[i]));
         break;
       case 'Wednesday':
-        wednesdayTasks.push(taskName[i]);
+        wednesdayTasks.push(JSON.stringify(fullTask[i]));
         break;
       case 'Thursday':
-        thursdayTasks.push(taskName[i]);
+        thursdayTasks.push(JSON.stringify(fullTask[i]));
         break;
       case 'Friday':
-        fridayTasks.push(taskName[i]);
+        fridayTasks.push(JSON.stringify(fullTask[i]));
         break;
       case 'Saturday':
-        saturdayTasks.push(taskName[i]);
+        saturdayTasks.push(JSON.stringify(fullTask[i]));
         break;
       case 'Sunday':
-        sundayTasks.push(taskName[i]);
+        sundayTasks.push(JSON.stringify(fullTask[i]));
         break;
     }
   };
