@@ -67,11 +67,11 @@ router.get('/homepage', withAuth, async (req, res) => {
 // Redirect the request to another route if user logged in
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
-        res.redirect('/homepage');
+        res.redirect('homepage');
         return;
     }
 
-    res.render('/login');
+    res.render('login');
 });
 
 router.get('/signup', (req, res) => {
@@ -80,7 +80,7 @@ router.get('/signup', (req, res) => {
         return;
     }
 
-    res.render('/signup')
+    res.render('signup')
 });
 
 router.get('/task-add', (req, res) => {
@@ -91,11 +91,11 @@ router.get('/task-add', (req, res) => {
         return;
     }
 
-    res.redirect('/login')
+    res.redirect('login')
 });
 
 // Define task to be edited via ID
-router.get("/editpost/:id", async (req, res) => {
+router.get("editpost/:id", async (req, res) => {
     try {
         const taskData = await Task.findByPk(req.params.id, {
             include: [
