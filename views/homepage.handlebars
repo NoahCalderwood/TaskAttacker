@@ -1,0 +1,128 @@
+<!-- Loop over each object in the projects array -->
+{{!-- {{#each tasks as |task| }} --}}
+
+<div class="container">
+  <div class="text-center mb-5 bg-white">
+    <button type="button" class="btn btn-accent btn-sm" >Add Task</button>
+  </div>
+
+  <div class="row swim-lanes text-center justify-content-between">
+    <div class="col-12 col-lg-2 d-flex">
+      <div id="to-do" class="card border-light mb-3 lane flex-grow-1">
+        <div class="card-header bg-white">
+          <h2 class="card-title mb-1">Monday</h2>
+        </div>
+        <div class="card-body bg-light">
+          {{#each tasks as |task| }}
+          {{!-- {{#each mondayTask as |task|}} --}}
+          {{#if mondayTask }}
+          <p>{{task.task_name}}</p>
+          {{/if}}
+          {{/each}}
+          <div id="monday-cards"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-2 d-flex">
+      <div id="in-progress" class="card border-light mb-3 lane flex-grow-1">
+        <div class="card-header bg-white">
+          <h2 class="card-title mb-1">Tuesday</h2>
+        </div>
+        <div class="card-body bg-light">
+          {{!-- {{#each tasks as |task| }}
+          {{#if check_day task.todo_day 'Tuesday'}}
+          <p>{{task.task_name}}</p>
+          {{/if}}
+          {{/each}} --}}
+          <div id="tuesday-cards"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-2 d-flex">
+      <div id="done" class="card border-light mb-3 lane flex-grow-1">
+        <div class="card-header bg-white">
+          <h2 class="card-title mb-1">Wednesday</h2>
+        </div>
+        <div class="card-body bg-light">
+          {{!-- {{#each tasks as |task| }}
+          {{#if check_day task.todo_day 'Wednesday'}}
+          <p>{{task.task_name}}</p>
+          {{/if}}
+          {{/each}} --}}
+          <div id="wednesday-cards"></div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-2 d-flex">
+        <div id="done" class="card border-light mb-3 lane flex-grow-1">
+          <div class="card-header bg-white">
+            <h2 class="card-title mb-1">Thursday</h2>
+          </div>
+          <div class="card-body bg-light">
+            {{!-- {{#each tasks as |task| }}
+            {{#if check_day task.todo_day 'Thursday'}}
+            <p>{{task.task_name}}</p>
+            {{/if}}
+            {{/each}} --}}
+            <div id="thursday-cards"></div>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-2 d-flex">
+          <div id="done" class="card border-light mb-3 lane flex-grow-1">
+            <div class="card-header bg-white">
+              <h2 class="card-title mb-1">Friday</h2>
+            </div>
+            <div class="card-body bg-light">
+              {{!-- {{#each tasks as |task| }}
+              {{#if check_day task.todo_day 'Friday'}}
+              <p>{{task.task_name}}</p>
+              {{/if}}
+              {{/each}} --}}
+              <div id="friday-cards"></div>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-2 d-flex">
+            <div id="done" class="card border-light mb-3 lane flex-grow-1">
+              <div class="card-header bg-white">
+                <h2 class="card-title mb-1">Saturday</h2>
+              </div>
+              <div class="card-body bg-light">
+                {{!-- {{#each tasks as |task| }}
+                {{#if check_day task.todo_day 'Saturday'}}
+                <p>{{task.task_name}}</p>
+                {{/if}}
+                {{/each}} --}}
+                <div id="saturday-cards"></div>
+              </div>
+            </div>
+
+            {{!-- <div class="col-12 col-lg-2 d-flex">
+              <div id="done" class="card border-light mb-3 lane flex-grow-1">
+                <div class="card-header bg-white">
+                  <h2 class="card-title mb-1">Sunday</h2>
+                </div>
+                <div class="card-body bg-light">
+                  {{#each tasks as |task| }}
+                  {{#if check_day task.todo_day 'Sunday'}}
+                  <p>{{task.task_name}}</p>
+                  {{/if}}
+                  {{/each}}
+                  <div id="done-cards"></div>
+                </div>
+              </div> --}}
+
+
+
+
+
+            </div>
+          </div>
+        </div>
+
+        {{!-- {{/each}} --}}
+
+        <script src="../utils/checkDay.js"></script>
