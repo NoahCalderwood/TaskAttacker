@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-auto">
-    <h2>Welcome, {{User.name}}!</h2>
+    <h2>Welcome, {{user.name}}!</h2>
   </div>
 </div>
 <div class="container">
@@ -21,29 +21,28 @@
         <input class="form-input" type="text" id="task-new-name" name="task-name" />
       </div>
       <div>
-        <div class="form-group">
+        <div class="form-group" id="task-new-category">
           <p>Task Category:</p>
-          <input type="radio" id="task-new-category" name="task_priority" value="Home">
+          <input type="radio" id="task-category" name="task_category" value="Home">
           <label for="Home">Home</label><br>
-          <input type="radio" id="task-new-category" name="task_priority" value="Auto">
+          <input type="radio" id="task-category" name="task_category" value="Auto">
           <label for="Auto">Auto</label><br>
-          <input type="radio" id="task-new-category" name="task_priority" value="Lawn">
+          <input type="radio" id="task-category" name="task_category" value="Lawn">
           <label for="Lawn">Lawn</label><br>
-          <input type="radio" id="task-new-category" name="task_priority" value="Work">
+          <input type="radio" id="task-category" name="task_category" value="Work">
           <label for="Work">Work</label><br>
-          <input type="radio" id="task-new-category" name="task_priority" value="Kids">
+          <input type="radio" id="task-category" name="task_category" value="Kids">
           <label for="Kids">Kids</label><br>
-          <input type="radio" id="task-new-category" name="task_priority" value="School">
-          <label for="School">School</label><br>
         </div>
       </div>
-      <div class="form-group">
+      <br>
+      <div class="form-group" id="task-new-priority">
         <p>Task Priority:</p>
-        <input type="radio" id="task-new-priority" name="task_priority" value="low">
+        <input type="radio" id="task-priority" name="task_priority" value="low">
         <label for="low">Low</label><br>
-        <input type="radio" id="task-new-priority" name="task_priority" value="medium">
+        <input type="radio" id="task-priority" name="task_priority" value="medium">
         <label for="medium">Medium</label><br>
-        <input type="radio" id="task-new-priority" name="task_priority" value="high">
+        <input type="radio" id="task-priority" name="task_priority" value="high">
         <label for="high">High</label>
       </div>
       <div>
@@ -57,16 +56,16 @@
         <input class="form-input" type="time" id="task-new-time" name="task priority" />
       </div>
   </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Create Task</button>
+  </div>
+  </form>
   <!--  Future expansion
       <div class="form-group">
         <label for="task-assign">Task Assignment:</label>
         <textarea class="form-input" id="task-desc" name="task-desc"></textarea>
       </div>
 -->
-  <div class="form-group">
-    <button type="submit" class="btn btn-primary">Create Task</button>
-  </div>
-  </form>
 </div>
 
 {{#if tasks.length}}

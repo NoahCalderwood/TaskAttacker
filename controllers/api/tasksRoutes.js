@@ -20,7 +20,7 @@ router.post('/', withAuth, async (req, res) => {
   try {
     const newTask = await Task.create({
       task_name: req.body.name,
-      category_id: req.body.category,
+      category_name: req.body.category,
       due_date: req.body.due,
       priority_name: req.body.priority,
       task_time: req.body.time,
