@@ -8,7 +8,7 @@
     <form class="p-1 modal-box flex flex-col justify-center items-center" id="new-task-form">
       <h3 class="text-xl">Create a New Task:</h3>
       <label for="task-new-name"></label>
-      <input class="from-input w-full max-w-xs" type="text" name="task-new-name" id="task-new-name"
+      <input class="form-input w-full max-w-xs" type="text" name="task-new-name" id="task-new-name"
         placeholder="Task Name">
 
       <select class="p-1 select select-bordered w-full max-w-xs mt-2" name="task-new-category" id="task-new-category">
@@ -28,10 +28,10 @@
       </select>
 
       <label for="task-new-date p-1">Task Due Day:</label>
-      <input class="form-input" type="date" id="task-new-date" name="task-new-date" />
+      <input class="form-input w-full max-w-xs mt-2" type="date" id="task-new-date" name="task-new-date" />
 
       <label for="pb-4 task-new-time">Task Due Time:</label>
-      <input class=" form-input" type="time" id="task-new-time" name="task-new-time" />
+      <input class=" form-input w-full max-w-xs mt-2" type="time" id="task-new-time" name="task-new-time" />
       <button
         class="btn btn-primary bg-secondary text-lg text-semibold border border-solid border-gray-500 w-1/8 p-1 mt-4 shadow-lg hover:bg-sky-700 hover:text-white"
         type="submit" id="submit">Submit</button>
