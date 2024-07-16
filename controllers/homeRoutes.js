@@ -2,53 +2,52 @@ const router = require('express').Router();
 const { User, Task } = require('../models')
 const withAuth = require('../utils/auth');
 
-// router.get('/', async (req, res) => {
-//     try {
-//         const taskData = await Task.findAll({
-//             include: [
-//                 {
-//                     model: User,
-//                     attributes: ['name'],
-//                 },
-//             ],
-//         });
-
-//         const tasks = taskData.map((task) => task.get({ plain: true }));
-
-//         res.render('homepage', {
-//             tasks,
-//             logged_in: req.session.logged_in,
-//             mondayTask: tasks.filter(t => { t.todo_day === 'Monday' })
-//         });
-//     } catch (err) {
-//         console.error(err)
-//         res.status(500).json(err);
-//     }
-// });
-
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
-        const taskData = await User.findByPk(req.session.user_id, {
-            attributes: { exclude: ['password'] },
+        const taskData = await Task.findAll({
             include: [
                 {
-                    model: Task,
-                    attributes: ['task_name']
-                }
+                    model: User,
+                    attributes: ['name'],
+                },
             ],
         });
 
-        // const tasks = taskData.map((task) => task.get({ plain: true }));
-        const tasks = taskData.get({ plain: true });
-        console.log(tasks);
+        const tasks = taskData.map((task) => task.get({ plain: true }));
+
         res.render('homepage', {
             tasks,
-            logged_in: req.session.logged_in
+            logged_in: req.session.logged_in,
         });
     } catch (err) {
+        console.error(err)
         res.status(500).json(err);
     }
 });
+
+// router.get('/', withAuth, async (req, res) => {
+//     try {
+//         const taskData = await User.findByPk(req.session.user_id, {
+//             attributes: { exclude: ['password'] },
+//             include: [
+//                 {
+//                     model: Task,
+//                     attributes: ['task_name']
+//                 }
+//             ],
+//         });
+
+//         // const tasks = taskData.map((task) => task.get({ plain: true }));
+//         const tasks = taskData.get({ plain: true });
+//         console.log(tasks);
+//         res.render('homepage', {
+//             tasks,
+//             logged_in: req.session.logged_in
+//         });
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
 
 // GET tasks to be rendered individually
 router.get('/task/:id', withAuth, async (req, res) => {
@@ -75,28 +74,28 @@ router.get('/task/:id', withAuth, async (req, res) => {
 
 
 // Find the logged in user based on the session user ID
-// router.get('/homepage', withAuth, async (req, res) => {
-//     try {
-//         const taskData = await Task.findAll({
-//             where: { user_id: req.session.user_id },
-//             include: [
-//                 {
-//                     model: User,
-//                     attributes: ['name']
-//                 }
-//             ],
-//         });
+router.get('/homepage', withAuth, async (req, res) => {
+    try {
+        const taskData = await Task.findAll({
+            where: { user_id: req.session.user_id },
+            include: [
+                {
+                    model: User,
+                    attributes: ['name']
+                }
+            ],
+        });
 
-//         const tasks = taskData.map((task) => task.get({ plain: true }));
+        const tasks = taskData.map((task) => task.get({ plain: true }));
 
-//         res.render('homepage', {
-//             tasks,
-//             logged_in: req.session.logged_in
-//         });
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
+        res.render('homepage', {
+            tasks,
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 // Eric test homepage route:
 // router.get('/homepage', withAuth, async (req, res) => {

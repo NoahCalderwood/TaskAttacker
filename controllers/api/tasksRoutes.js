@@ -5,7 +5,7 @@ const withAuth = require('../../utils/auth');
 router.get('/', async (req, res) => {
   try {
     const taskData = await Task.findAll({
-      include: [{ model: User }, { model: Category }],
+      include: [{ model: User, attributes: ['name'] }, { model: Category }],
     });
     res.status(200).json(taskData);
 
