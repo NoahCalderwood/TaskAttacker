@@ -17,34 +17,35 @@
 
 
     <form class="modal-box flex flex-col justify-center items-center" id="new-task-form">
-    <h3>Create a New Task:</h3>
+      <h3>Create a New Task:</h3>
       <label for="task-new-name"></label>
-      <input class="from-input w-full max-w-xs" type="text" name="task-new-name" id="task-new-name" placeholder="Task Name">
+      <input class="from-input w-full max-w-xs" type="text" name="task-new-name" id="task-new-name"
+        placeholder="Task Name">
 
       <select class="select select-bordered w-full max-w-xs mt-2" name="task-new-category" id="task-new-category">
-          <option value="" disabled selected>Select Category</option>
-          <option value="home">Home</option>
-          <option value="auto">Auto</option>
-          <option value="lawn">Lawn</option>
-          <option value="work">Work</option>
-          <option value="kids">Kids</option>  
+        <option value="" disabled selected>Select Category</option>
+        <option value="home">Home</option>
+        <option value="auto">Auto</option>
+        <option value="lawn">Lawn</option>
+        <option value="work">Work</option>
+        <option value="kids">Kids</option>
       </select>
 
       <select class="select select-bordered w-full max-w-xs mt-2" name="task-new-priority" id="task-new-priority">
-          <option value="" disabled selected>Select Priority</option>
-          <option value="low">Low</option>
-          <option value="medium">Medium</option>  
-          <option value="high">High</option>   
-      </select>  
+        <option value="" disabled selected>Select Priority</option>
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
 
       <label for="task-new-date">Task Due Day:</label>
       <input class="form-input" type="date" id="task-new-date" name="task-new-date" />
 
       <label for="task-new-time">Task Due Time:</label>
       <input class="form-input" type="time" id="task-new-time" name="task-new-time" />
-      <button class="btn btn-primary" type="submit" id="submit">Submit</button>       
-      </div>
-    </form>
+      <button class="btn btn-primary" type="submit" id="submit">Submit</button>
+  </div>
+  </form>
 </div>
 
 {{#if user.tasks.length}}
@@ -53,12 +54,14 @@
 
   {{#each user.tasks as |task|}}
   <div class="row mb-2">
+
     <div class="col-md-8 justify-center items-center">
       <h4><class="col-md-8 justify-center items-center" a href="/homepage/{{task.id}}">{{task.task_name}}</a></h4>
     </div>
     <div class="select select-bordered w-full max-w-xs mt-2 p-2 content-center justify-center items-center">
       <a href="/task-edit/{{id}}" class="select select-bordered w-full max-w-xs mt-2 btn btn-warning justify-center items-center">Edit Task</a>
       <button id="delete" class="btn btn-sm btn-danger justify-center items-center" data-id="{{task.id}}">Delete Task</button>
+
     </div>
   </div>
   {{/each}}
@@ -69,5 +72,4 @@
 {{!--
 <script src="/js/profile.js"></script> --}}
 <script src="/js/task-add.js"></script>
-{{!-- <script src="/js/task-edit.js"></script>
-<script src="/js/task-delete.js"></script> --}}
+<script src="/js/task-delete.js"></script>
