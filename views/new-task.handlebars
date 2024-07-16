@@ -1,4 +1,4 @@
-<!-- task modal to display the tasks for a given day -->
+<!-- task modal to add a task for a given day-->
 
 <!-- id="add_task_modal" -->
 <!-- line 9 -->
@@ -39,12 +39,8 @@
 
       <select class="select select-bordered w-full max-w-xs mt-2" name="task-time" id="task-time">
         <option value="" disabled selected>Task Start Time:</option>
-        <option value="10">10 miles</option>
-        <option value="25">25 miles</option>
-        <option value="50">50 miles</option>
-        <option value="75">75 miles</option>
-        <option value="100">100 miles</option>
-     </select>  
+        <input type="text" name="start-time" id="start-time" placeholder="Time: HH:MM" required />
+      </select>  
 
       <input class="input input-bordered w-full max-w-xs mt-2" type="text" name="due-date" id="due-date" placeholder="Due date"/>
         <div class="modal-action">
