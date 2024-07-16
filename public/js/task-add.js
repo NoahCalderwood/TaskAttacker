@@ -4,12 +4,12 @@ const newTaskFormHandler = async (event) => {
     event.preventDefault();
 
     const name = document.querySelector('#task-new-name').value.trim();
-    const category = document.querySelector('#task-new-category').value.trim();
+    const category = document.querySelector('#task-new-category').value;
     const due = document.querySelector('#task-new-date').value;
-    const priority = document.querySelector('#task-new-priority').value.trim();
+    const priority = document.querySelector('#task-new-priority').value;
     const time = document.querySelector('#task-new-time').value;
 
-    if (!name || !category || !priority || !time || !due) {
+    if (!name || !category || !due || !priority || !time) {
         alert('Please fill out all fields.')
         return;
     }
