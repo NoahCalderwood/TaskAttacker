@@ -1,4 +1,4 @@
-console.log("Here profile")
+// TODO Delete This
 const newFormHandler = async (event) => {
   event.preventDefault();
 
