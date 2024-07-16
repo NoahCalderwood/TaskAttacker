@@ -1,3 +1,4 @@
+// Config for EmailJS
 const emailjs = require('@emailjs/nodejs')
 
 emailjs.init({
