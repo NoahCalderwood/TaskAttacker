@@ -17,14 +17,6 @@ Task.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // category_id: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: true,
-    //   references: {
-    //     model: 'category',
-    //     key: 'id',
-    //   }
-    // },
     category_name: {
       type: DataTypes.STRING,
       allowNull: false,
