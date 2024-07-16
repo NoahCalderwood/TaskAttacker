@@ -1,16 +1,16 @@
 <div class="row">
   <div class="col-auto">
-    <h2>Welcome, {{name}}!</h2>
+    <h2>Welcome, {{User.name}}!</h2>
   </div>
 </div>
 <div class="container">
   <div class="text-center mb-5">
     <div class="flex justify-center mt-10"></div>
-      <button class="btn btn-accent btn-wide modal" onclick="show_tasks_modal.showModal()">Today's Tasks</button>
+    <button class="btn btn-accent btn-wide modal" onclick="show_tasks_modal.showModal()">Today's Tasks</button>
 
-      <button class="btn btn-accent btn-wide modal" onclick="add_task_modal.showModal()">Add Task To Do List</button>
-    </div>
+    <button class="btn btn-accent btn-wide modal" onclick="add_task_modal.showModal()">Add Task To Do List</button>
   </div>
+</div>
 <div class="row mt-4">
   <div class="col-md-6">
     <h3>Create a New Task:</h3>
@@ -22,37 +22,35 @@
       </div>
       <div>
         <div class="form-group">
-          <label for="task-name">Task Category:</label>
-          <input class="form-input" type="text" id="task-new-category" name="task-name" />
+          <p>Task Category:</p>
+          <input type="radio" id="task-new-category" name="task_priority" value="Home">
+          <label for="Home">Home</label><br>
+          <input type="radio" id="task-new-category" name="task_priority" value="Auto">
+          <label for="Auto">Auto</label><br>
+          <input type="radio" id="task-new-category" name="task_priority" value="Lawn">
+          <label for="Lawn">Lawn</label><br>
+          <input type="radio" id="task-new-category" name="task_priority" value="Work">
+          <label for="Work">Work</label><br>
+          <input type="radio" id="task-new-category" name="task_priority" value="Kids">
+          <label for="Kids">Kids</label><br>
+          <input type="radio" id="task-new-category" name="task_priority" value="School">
+          <label for="School">School</label><br>
         </div>
       </div>
       <div class="form-group">
-        <label for="task priority">Task Priority:</label>
-        {{!-- TODO Select dropdown --}}
-        <input class="form-input" type="text" id="task-new-priority" name="task priority" />
+        <p>Task Priority:</p>
+        <input type="radio" id="task-new-priority" name="task_priority" value="low">
+        <label for="low">Low</label><br>
+        <input type="radio" id="task-new-priority" name="task_priority" value="medium">
+        <label for="medium">Medium</label><br>
+        <input type="radio" id="task-new-priority" name="task_priority" value="high">
+        <label for="high">High</label>
       </div>
       <div>
         <div class="form-group">
           <label for="task priority">Task Due Day:</label>
-          <input class="form-input" type="date" id="task-new-priority" name="task priority" />
+          <input class="form-input" type="date" id="task-new-date" name="task priority" />
         </div>
-      </div>
-      <div class="form-group" id="task-new-day">
-        <label for="Monday">Monday</label>
-        <input type="checkbox" class="form-input" id="Monday" name="task-desc"></input>
-        <label for="Tuesday">Tuesday</label>
-        <input type="checkbox" class="form-input" id="Tuesday" name="task-desc"></input>
-        <label for="Wednesday">Wednesday</label>
-        <input type="checkbox" class="form-input" id="Wednesday" name="task-desc"></input>
-        <label for="Thursday">Thursday</label>
-        <input type="checkbox" class="form-input" id="Thursday" name="task-desc"></input>
-        <label for="Friday">Friday</label>
-        <input type="checkbox" class="form-input" id="Friday" name="task-desc"></input>
-        <label for="Saturday">Saturday</label>
-        <input type="checkbox" class="form-input" id="Saturday" name="task-desc"></input>
-        <label for="Sunday">Sunday</label>
-        <input type="checkbox" class="form-input" id="Sunday" name="task-desc"></input>
-
       </div>
       <div class="form-group">
         <label for="task priority">Task Due Time:</label>
@@ -90,7 +88,8 @@
 {{/if}}
 </div>
 
-<script src="/js/profile.js"></script>
+{{!--
+<script src="/js/profile.js"></script> --}}
 <script src="/js/task-add.js"></script>
 <script src="/js/task-edit.js"></script>
 <script src="/js/task-delete.js"></script>

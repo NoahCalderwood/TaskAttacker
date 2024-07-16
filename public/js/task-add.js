@@ -1,26 +1,22 @@
 // Handle adding a new task
+console.log("Here add task")
 const newTaskFormHandler = async (event) => {
     event.preventDefault();
 
     const name = document.querySelector('#task-new-name').value.trim();
     const category = document.querySelector('#task-new-category').value.trim();
-    const due = document.querySelector('#task-new-date');
-    const tododay = document.querySelector('#task-new-day');
-    const priority = document.querySelector('#task-new-priority');
-    const time = document.querySelector('#task-new-time');
+    const due = document.querySelector('#task-new-date').value;
+    const priority = document.querySelector('#task-new-priority').value.trim();
+    const time = document.querySelector('#task-new-time').value;
 
-    if (!name || !category || !priority) {
+    if (!name || !category || !priority || !time || !due) {
         alert('Please fill out all fields.')
         return;
     }
-    if (!due && !tododay) {
-        alert('Please fill out either due date or day checkboxes.')
-        return;
-    }
-
-    const response = await fetch('/api/posts', {
+    console.log({ name, category, due, priority, time })
+    const response = await fetch('/api/task', {
         method: 'POST',
-        body: JSON.stringify({ name, category, due, tododay, priority, time }),
+        body: JSON.stringify({ name, category, due, priority, time }),
         headers: { 'Content-Type': 'application/json' },
     });
 

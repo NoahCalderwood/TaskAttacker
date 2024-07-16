@@ -1,3 +1,4 @@
+console.log("Here profile")
 const newFormHandler = async (event) => {
   event.preventDefault();
 
