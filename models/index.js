@@ -11,13 +11,13 @@ Task.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
-Category.hasMany(Task, {
-  foreignKey: 'category_id',
-  onDelete: 'CASCADE'
-});
+// Category.hasMany(Task, {
+//   foreignKey: 'category_id',
+//   onDelete: 'CASCADE'
+// });
 
-Task.belongsTo(Category, {
-  foreignKey: 'category_id'
-});
+// Task.belongsTo(Category, {
+//   foreignKey: 'category_id'
+// });
 
 module.exports = { User, Task, Category };

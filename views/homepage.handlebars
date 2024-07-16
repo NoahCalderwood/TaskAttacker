@@ -8,10 +8,10 @@
     <div class="col-12 col-lg-2 d-flex">
       <div id="to-do" class="card border-light mb-3 lane flex-grow-1">
         <div class="card-header bg-white">
-          <h2 class="card-title mb-1">{{task.task_time}}</h2>
+          <h2 class="card-title mb-1"></h2>
         </div>
         <div class="card-body bg-light">
-          <h4><a href="/task/{{task.id}}">{{task.task_name}}</a></h4>
+          <h4><a href="/task/{{task.id}}">{{task.task_name}} at {{task.task_time}}</a></h4>
           <div id="monday-cards"></div>
         </div>
       </div>
@@ -20,5 +20,5 @@
     {{/each}}
 </div>
 
-<script src="../utils/checkDay.js"></script>
+{{!-- <script src="../utils/checkDay.js"></script> --}}
 <script src="./js/darkmode.js"></script>
