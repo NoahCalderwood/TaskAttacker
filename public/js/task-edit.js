@@ -12,7 +12,6 @@ const updateTaskFormHandler = async (event) => {
     // const due = document.querySelector('#task-edit-date);
     // const time = document.querySelector('#task-edit-time);
     // const tododay = document.querySelector('#task-edit-day');
-    // const week = document.querySelector('#task-edit-week');
 
     if (task && category && priority) {
         const response = await fetch(`/api/task/${task_id}`, {
