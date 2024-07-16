@@ -2,52 +2,52 @@ const router = require('express').Router();
 const { User, Task } = require('../models')
 const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
-    try {
-        const taskData = await Task.findAll({
-            include: [
-                {
-                    model: User,
-                    attributes: ['name'],
-                },
-            ],
-        });
-
-        const tasks = taskData.map((task) => task.get({ plain: true }));
-
-        res.render('homepage', {
-            tasks,
-            logged_in: req.session.logged_in,
-        });
-    } catch (err) {
-        console.error(err)
-        res.status(500).json(err);
-    }
-});
-
-// router.get('/', withAuth, async (req, res) => {
+// router.get('/', async (req, res) => {
 //     try {
-//         const taskData = await User.findByPk(req.session.user_id, {
-//             attributes: { exclude: ['password'] },
+//         const taskData = await Task.findAll({
 //             include: [
 //                 {
-//                     model: Task,
-//                     attributes: ['task_name']
-//                 }
+//                     model: User,
+//                     attributes: ['name'],
+//                 },
 //             ],
 //         });
 
-//         // const tasks = taskData.map((task) => task.get({ plain: true }));
-//         const tasks = taskData.get({ plain: true });
-//         console.log(tasks);
+//         const tasks = taskData.map((task) => task.get({ plain: true }));
+
 //         res.render('homepage', {
 //             tasks,
-//             logged_in: req.session.logged_in
+//             logged_in: req.session.logged_in,
 //         });
 //     } catch (err) {
+//         console.error(err)
 //         res.status(500).json(err);
 //     }
 // });
+
+router.get('/', withAuth, async (req, res) => {
+    try {
+        const taskData = await User.findByPk(req.session.user_id, {
+            attributes: { exclude: ['password'] },
+            include: [
+                {
+                    model: Task,
+                    attributes: ['task_time', 'id', 'task_name']
+                }
+            ],
+        });
+
+        // const tasks = taskData.map((task) => task.get({ plain: true }));
+        const user = taskData.get({ plain: true });
+        console.log(user);
+        res.render('homepage', {
+            user,
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 // GET tasks to be rendered individually
 router.get('/task/:id', withAuth, async (req, res) => {
