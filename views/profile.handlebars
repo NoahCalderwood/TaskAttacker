@@ -16,12 +16,12 @@
   <div class="col-md-6">
 
 
-    <form method="dialog" class="modal-box flex flex-col justify-center items-center" id="response-form">
+    <form class="modal-box flex flex-col justify-center items-center" id="new-task-form">
     <h3>Create a New Task:</h3>
-      <label for="task-name"></label>
-      <input class="from-input w-full max-w-xs" type="text" name="task-name" id="task-name" placeholder="Task Name">
+      <label for="task-new-name"></label>
+      <input class="from-input w-full max-w-xs" type="text" name="task-new-name" id="task-new-name" placeholder="Task Name">
 
-      <select class="select select-bordered w-full max-w-xs mt-2" name="category" id="category">
+      <select class="select select-bordered w-full max-w-xs mt-2" name="task-new-category" id="task-new-category">
           <option value="" disabled selected>Select Category</option>
           <option value="home">Home</option>
           <option value="auto">Auto</option>
@@ -30,7 +30,7 @@
           <option value="kids">Kids</option>  
       </select>
 
-      <select class="select select-bordered w-full max-w-xs mt-2" name="priority" id="priority">
+      <select class="select select-bordered w-full max-w-xs mt-2" name="task-new-priority" id="task-new-priority">
           <option value="" disabled selected>Select Priority</option>
           <option value="low">Low</option>
           <option value="medium">Medium</option>  
