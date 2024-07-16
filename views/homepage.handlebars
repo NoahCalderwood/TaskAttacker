@@ -1,23 +1,19 @@
-<!-- Loop over each object in the tasks array -->
-<div class="container mt-12">
-  {{#each user.tasks as |task|}}
-  <div class="row swim-lanes text-center justify-content-between ">
-    <div class="col-12 col-lg-2 d-flex">
-      <div id="to-do" class="card border-light mb-3 lane flex-grow-1">
-        <div class="card-header bg-white">
-          <h2 class="card-title mb-1"></h2>
-        </div>
-        <div class="card-body bg-light">
-          <h4>{{task.task_name}} at {{task.task_time}}</h4>
-          <div id="monday-cards"></div>
-        </div>
+<div class="flex flex-col justify-center items-center mt-12">
+  <p
+    class="bg-secondary block max-w-sm p-4 border border-gray-200 rounded-lg shadow text-3xl font-semibold mb-5 text-bgDark">
+    Today's Tasks</p>
+  <div class="w-2/3 text-2xl container mx-auto">
+    {{#each user.tasks as |task|}}
+    <div class="card mb-5">
+      <div class="card-header shadow bg-primary">
+        <h2>
+          <p class="text-center text-white text-2xl">{{task.task_time}}</p>
+        </h2>
+      </div>
+      <div class="card-body bg-secondary py-4 px-2">
+        <p class="text-center text-semibold text-xl text-bgDark text-m">{{task.task_name}}</p>
       </div>
     </div>
+    {{/each}}
   </div>
-  {{/each}}
 </div>
-
-{{!--
-<script src="../utils/checkDay.js"></script> --}}
-{{!--
-<script src="./js/darkmode.js"></script> --}}
