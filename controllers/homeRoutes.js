@@ -74,28 +74,28 @@ router.get('/task/:id', withAuth, async (req, res) => {
 
 
 // Find the logged in user based on the session user ID
-router.get('/homepage', withAuth, async (req, res) => {
-    try {
-        const taskData = await Task.findAll({
-            where: { user_id: req.session.user_id },
-            include: [
-                {
-                    model: User,
-                    attributes: ['name']
-                }
-            ],
-        });
+// router.get('/homepage', withAuth, async (req, res) => {
+//     try {
+//         const taskData = await Task.findAll({
+//             where: { user_id: req.session.user_id },
+//             include: [
+//                 {
+//                     model: User,
+//                     attributes: ['name']
+//                 }
+//             ],
+//         });
 
-        const tasks = taskData.map((task) => task.get({ plain: true }));
+//         const tasks = taskData.map((task) => task.get({ plain: true }));
 
-        res.render('homepage', {
-            tasks,
-            logged_in: req.session.logged_in
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
+//         res.render('homepage', {
+//             tasks,
+//             logged_in: req.session.logged_in
+//         });
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
 
 // Eric test homepage route:
 // router.get('/homepage', withAuth, async (req, res) => {
@@ -122,26 +122,49 @@ router.get('/homepage', withAuth, async (req, res) => {
 //     }
 // });
 
+// router.get('/profile', withAuth, async (req, res) => {
+//     try {
+//         const taskData = await Task.findAll({
+//             where: { user_id: req.session.user_id },
+//             include: [
+//                 {
+//                     model: User,
+//                     attributes: ['name']
+//                 }
+//             ],
+//         });
+
+//         const tasks = taskData.map((task) => task.get({ plain: true }));
+
+//         res.render('profile', {
+//             tasks,
+//             logged_in: req.session.logged_in
+//         });
+//     } catch (err) {
+//         console.error(err)
+//         res.status(500).json(err);
+//     }
+// });
+
 router.get('/profile', withAuth, async (req, res) => {
     try {
-        const taskData = await Task.findAll({
-            where: { user_id: req.session.user_id },
+        const userData = await User.findByPk(req.session.user_id, {
+            attributes: { exclude: ['password'] },
             include: [
                 {
-                    model: User,
-                    attributes: ['name']
+                    model: Task,
+                    attributes: ['task_time', 'id', 'task_name']
                 }
             ],
         });
 
-        const tasks = taskData.map((task) => task.get({ plain: true }));
-
+        // const tasks = taskData.map((task) => task.get({ plain: true }));
+        const user = userData.get({ plain: true });
         res.render('profile', {
-            tasks,
+            user,
             logged_in: req.session.logged_in
         });
     } catch (err) {
-        console.error(err)
         res.status(500).json(err);
     }
 });

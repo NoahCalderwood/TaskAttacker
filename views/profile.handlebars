@@ -68,18 +68,18 @@
 -->
 </div>
 
-{{#if tasks.length}}
+{{#if user.tasks.length}}
 <div class="col-md-6 project-list">
   <h3>Current Tasks:</h3>
 
-  {{#each task as |tasks|}}
+  {{#each user.tasks as |task|}}
   <div class="row mb-2">
     <div class="col-md-8">
-      <h4><a href="/homepage/{{task.id}}">{{tasks.task_name}}</a></h4>
+      <h4><a href="/homepage/{{task.id}}">{{task.task_name}}</a></h4>
     </div>
     <div class="p-2 content-center">
       <a href="/task-edit/{{id}}" class="btn btn-warning">Edit Task</a>
-      <button id="delete" class="btn btn-sm btn-danger" data-id="{{tasks.id}}">Delete Task</button>
+      <button id="delete" class="btn btn-sm btn-danger" data-id="{{task.id}}">Delete Task</button>
     </div>
   </div>
   {{/each}}
