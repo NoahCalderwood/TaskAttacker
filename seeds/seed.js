@@ -11,8 +11,8 @@ const seedAll = async () => {
   await seedUsers();
   console.log('\n----- USERS SEEDED -----\n');
 
-  await seedCategories();
-  console.log('\n----- CATEGORIES SEEDED -----\n');
+  // await seedCategories();
+  // console.log('\n----- CATEGORIES SEEDED -----\n');
 
   await seedTasks();
   console.log('\n----- TASKS SEEDED -----\n');
