@@ -68,29 +68,24 @@ router.post('/login', async (req, res) => {
     // console.log(user);
     //console.log(user.tasks.map((task) => task.todo_day));
 
-    fullTask = user.tasks.map((task) => task);
-    taskDays = user.tasks.map((task) => task.todo_day);
-    taskName = user.tasks.map((task) => task.task_name);
-    console.log(fullTask);
+    // fullTask = user.tasks.map((task) => task);
+    // taskDays = user.tasks.map((task) => task.todo_day);
+    // taskName = user.tasks.map((task) => task.task_name);
+    // console.log(fullTask);
 
-    // How can we store the data for each task as an object into session?
-    // Want to grab
-    // taskObj = { taskDays, taskName };
-    // console.log(taskObj);
-
-    groupDays(taskDays);
+    // groupDays(taskDays);
 
     req.session.save(() => {
       req.session.user_id = user.id;
       req.session.logged_in = true;
-      req.session.tasks = user.tasks;
-      req.session.mondayTasks = mondayTasks;
-      req.session.tuesdayTasks = tuesdayTasks;
-      req.session.wednesdayTasks = wednesdayTasks;
-      req.session.thursdayTasks = thursdayTasks;
-      req.session.fridayTasks = fridayTasks;
-      req.session.saturdayTasks = saturdayTasks;
-      req.session.sundayTasks = sundayTasks;
+      // req.session.tasks = user.tasks;
+      // req.session.mondayTasks = mondayTasks;
+      // req.session.tuesdayTasks = tuesdayTasks;
+      // req.session.wednesdayTasks = wednesdayTasks;
+      // req.session.thursdayTasks = thursdayTasks;
+      // req.session.fridayTasks = fridayTasks;
+      // req.session.saturdayTasks = saturdayTasks;
+      // req.session.sundayTasks = sundayTasks;
 
       res.json({ user: userData, message: 'You are now logged in!' });
     });
@@ -100,40 +95,40 @@ router.post('/login', async (req, res) => {
   }
 });
 
-function groupDays(taskDays) {
-  for (let i = 0; i < taskDays.length; i++) {
-    switch (taskDays[i]) {
-      case 'Monday':
-        mondayTasks.push(JSON.stringify(fullTask[i]));
-        break;
-      case 'Tuesday':
-        tuesdayTasks.push(JSON.stringify(fullTask[i]));
-        break;
-      case 'Wednesday':
-        wednesdayTasks.push(JSON.stringify(fullTask[i]));
-        break;
-      case 'Thursday':
-        thursdayTasks.push(JSON.stringify(fullTask[i]));
-        break;
-      case 'Friday':
-        fridayTasks.push(JSON.stringify(fullTask[i]));
-        break;
-      case 'Saturday':
-        saturdayTasks.push(JSON.stringify(fullTask[i]));
-        break;
-      case 'Sunday':
-        sundayTasks.push(JSON.stringify(fullTask[i]));
-        break;
-    }
-  };
-  console.log(`Monday: ${mondayTasks}`);
-  console.log(`Tuesday: ${tuesdayTasks}`);
-  console.log(`Wednesday: ${wednesdayTasks}`);
-  console.log(`Thursday: ${thursdayTasks}`);
-  console.log(`Friday: ${fridayTasks}`);
-  console.log(`Saturday: ${saturdayTasks}`);
-  console.log(`Sunday: ${sundayTasks}`);
-};
+// function groupDays(taskDays) {
+//   for (let i = 0; i < taskDays.length; i++) {
+//     switch (taskDays[i]) {
+//       case 'Monday':
+//         mondayTasks.push(JSON.stringify(fullTask[i]));
+//         break;
+//       case 'Tuesday':
+//         tuesdayTasks.push(JSON.stringify(fullTask[i]));
+//         break;
+//       case 'Wednesday':
+//         wednesdayTasks.push(JSON.stringify(fullTask[i]));
+//         break;
+//       case 'Thursday':
+//         thursdayTasks.push(JSON.stringify(fullTask[i]));
+//         break;
+//       case 'Friday':
+//         fridayTasks.push(JSON.stringify(fullTask[i]));
+//         break;
+//       case 'Saturday':
+//         saturdayTasks.push(JSON.stringify(fullTask[i]));
+//         break;
+//       case 'Sunday':
+//         sundayTasks.push(JSON.stringify(fullTask[i]));
+//         break;
+//     }
+//   };
+//   console.log(`Monday: ${mondayTasks}`);
+//   console.log(`Tuesday: ${tuesdayTasks}`);
+//   console.log(`Wednesday: ${wednesdayTasks}`);
+//   console.log(`Thursday: ${thursdayTasks}`);
+//   console.log(`Friday: ${fridayTasks}`);
+//   console.log(`Saturday: ${saturdayTasks}`);
+//   console.log(`Sunday: ${sundayTasks}`);
+// };
 
 // If a POST request is made to /api/users/logout, the function checks the logged_in state in the request.session object and destroys that session if logged_in is true.
 router.post('/logout', (req, res) => {
