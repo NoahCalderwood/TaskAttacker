@@ -25,6 +25,10 @@ Task.init(
         key: 'id',
       }
     },
+    category_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     priority_name: {
       type: DataTypes.ENUM([
         "low",
