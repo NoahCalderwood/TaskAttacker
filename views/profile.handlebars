@@ -1,28 +1,17 @@
-<div class="row">
-  <div class="col-auto text-2xl text-center">
+<div class="col mt-12">
+  <div class="col-auto text-3xl text-center">
     <h2>Welcome, {{user.name}}!</h2>
   </div>
 </div>
-<div class="container">
-  <div class="text-center mb-5">
-    <div class="flex justify-center mt-10"></div>
-    <button class="btn btn-accent btn-wide modal" onclick="show_tasks_modal.showModal()">Today's Tasks</button>
-
-    <button class="btn btn-accent btn-wide modal" onclick="add_task_modal.showModal()">Add Task To Do List</button>
-  </div>
-</div>
-
 <div class="row mt-4">
   <div class="col-md-6">
-
-
-    <form class="modal-box flex flex-col justify-center items-center" id="new-task-form">
-      <h3>Create a New Task:</h3>
+    <form class="p-1 modal-box flex flex-col justify-center items-center" id="new-task-form">
+      <h3 class="text-xl">Create a New Task:</h3>
       <label for="task-new-name"></label>
       <input class="from-input w-full max-w-xs" type="text" name="task-new-name" id="task-new-name"
         placeholder="Task Name">
 
-      <select class="select select-bordered w-full max-w-xs mt-2" name="task-new-category" id="task-new-category">
+      <select class="p-1 select select-bordered w-full max-w-xs mt-2" name="task-new-category" id="task-new-category">
         <option value="" disabled selected>Select Category</option>
         <option value="home">Home</option>
         <option value="auto">Auto</option>
@@ -38,39 +27,16 @@
         <option value="high">High</option>
       </select>
 
-      <label for="task-new-date">Task Due Day:</label>
+      <label for="task-new-date p-1">Task Due Day:</label>
       <input class="form-input" type="date" id="task-new-date" name="task-new-date" />
 
-      <label for="task-new-time">Task Due Time:</label>
-      <input class="form-input" type="time" id="task-new-time" name="task-new-time" />
-      <button class="btn btn-primary" type="submit" id="submit">Submit</button>
+      <label for="pb-4 task-new-time">Task Due Time:</label>
+      <input class=" form-input" type="time" id="task-new-time" name="task-new-time" />
+      <button
+        class="btn btn-primary bg-secondary text-lg text-semibold border border-solid border-gray-500 w-1/8 p-1 mt-4 shadow-lg hover:bg-sky-700 hover:text-white"
+        type="submit" id="submit">Submit</button>
   </div>
   </form>
 </div>
 
-{{#if user.tasks.length}}
-<div class="col-md-6 project-list flex flex-col justify-center items-center">
-  <h3>Current Tasks:</h3>
-
-  {{#each user.tasks as |task|}}
-  <div class="row mb-2">
-
-    <div class="col-md-8 justify-center items-center">
-      <h4><class="justify-center content-center items-center" a href="/homepage/{{task.id}}">{{task.task_name}}</a></h4>
-    </div>
-    
-    <div class="p-2 content-center justify-center items-center">
-      <id="delete" class="btn btn-sm btn-danger content-center justify-center items-center" data-id="{{task.id}}">
-    </div>
- 
-    
-  </div>
-  {{/each}}
-</div>
-{{/if}}
-</div>
-
-{{!--
-<script src="/js/profile.js"></script> --}}
 <script src="/js/task-add.js"></script>
-<script src="/js/task-delete.js"></script>
