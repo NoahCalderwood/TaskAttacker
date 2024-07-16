@@ -1,3 +1,4 @@
+// TODO Delete this
 const router = require('express').Router();
 const { Category, Task } = require('../../models');
 

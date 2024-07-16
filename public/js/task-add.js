@@ -25,9 +25,9 @@ const newTaskFormHandler = async (event) => {
         return;
     }
 
-    document.location.replace('/homepage');
+    document.location.replace('/');
 };
 
 document
-    .querySelector('.new-task-form')
+    .querySelector('#new-task-form')
     .addEventListener('submit', newTaskFormHandler);

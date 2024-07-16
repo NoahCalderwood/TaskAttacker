@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const { Task, User, Category } = require('../../models');
+const { Task, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
     const taskData = await Task.findAll({
-      include: [{ model: User, attributes: ['name'] }, { model: Category }],
+      include: [{ model: User, attributes: ['name'] }],
     });
     res.status(200).json(taskData);
 

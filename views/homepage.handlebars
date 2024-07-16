@@ -1,24 +1,23 @@
 <!-- Loop over each object in the tasks array -->
-<div class="container">
-  <div class="text-center mb-5">
-    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formModal">Add Task</button>
-  </div>
-{{#each user.tasks as |task|}}
-  <div class="row swim-lanes text-center justify-content-between">
+<div class="container mt-12">
+  {{#each user.tasks as |task|}}
+  <div class="row swim-lanes text-center justify-content-between ">
     <div class="col-12 col-lg-2 d-flex">
       <div id="to-do" class="card border-light mb-3 lane flex-grow-1">
         <div class="card-header bg-white">
           <h2 class="card-title mb-1"></h2>
         </div>
         <div class="card-body bg-light">
-          <h4><a href="/task/{{task.id}}">{{task.task_name}} at {{task.task_time}}</a></h4>
+          <h4>{{task.task_name}} at {{task.task_time}}</h4>
           <div id="monday-cards"></div>
         </div>
       </div>
     </div>
   </div>
-    {{/each}}
+  {{/each}}
 </div>
 
-{{!-- <script src="../utils/checkDay.js"></script> --}}
-<script src="./js/darkmode.js"></script>
+{{!--
+<script src="../utils/checkDay.js"></script> --}}
+{{!--
+<script src="./js/darkmode.js"></script> --}}
