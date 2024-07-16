@@ -11,61 +11,40 @@
     <button class="btn btn-accent btn-wide modal" onclick="add_task_modal.showModal()">Add Task To Do List</button>
   </div>
 </div>
+
 <div class="row mt-4">
   <div class="col-md-6">
-    <h3>Create a New Task:</h3>
 
-    <form class="form new-task-form">
-      <div class="form-group">
-        <label for="task-name">Task Name:</label>
-        <input class="form-input" type="text" id="task-new-name" name="task-name" />
+
+    <form method="dialog" class="modal-box flex flex-col justify-center items-center" id="response-form">
+    <h3>Create a New Task:</h3>
+      <label for="task-name"></label>
+      <input class="from-input w-full max-w-xs" type="text" name="task-name" id="task-name" placeholder="Task Name">
+
+      <select class="select select-bordered w-full max-w-xs mt-2" name="category" id="category">
+          <option value="" disabled selected>Select Category</option>
+          <option value="home">Home</option>
+          <option value="auto">Auto</option>
+          <option value="lawn">Lawn</option>
+          <option value="work">Work</option>
+          <option value="kids">Kids</option>  
+      </select>
+
+      <select class="select select-bordered w-full max-w-xs mt-2" name="priority" id="priority">
+          <option value="" disabled selected>Select Priority</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>  
+          <option value="high">High</option>   
+      </select>  
+
+      <label for="task-new-date">Task Due Day:</label>
+      <input class="form-input" type="date" id="task-new-date" name="task-new-date" />
+
+      <label for="task-new-time">Task Due Time:</label>
+      <input class="form-input" type="time" id="task-new-time" name="task-new-time" />
+      <button class="btn btn-primary" type="submit" id="submit">Submit</button>       
       </div>
-      <div>
-        <div class="form-group" id="task-new-category">
-          <p>Task Category:</p>
-          <input type="radio" id="task-category" name="task_category" value="Home">
-          <label for="Home">Home</label><br>
-          <input type="radio" id="task-category" name="task_category" value="Auto">
-          <label for="Auto">Auto</label><br>
-          <input type="radio" id="task-category" name="task_category" value="Lawn">
-          <label for="Lawn">Lawn</label><br>
-          <input type="radio" id="task-category" name="task_category" value="Work">
-          <label for="Work">Work</label><br>
-          <input type="radio" id="task-category" name="task_category" value="Kids">
-          <label for="Kids">Kids</label><br>
-        </div>
-      </div>
-      <br>
-      <div class="form-group" id="task-new-priority">
-        <p>Task Priority:</p>
-        <input type="radio" id="task-priority" name="task_priority" value="low">
-        <label for="low">Low</label><br>
-        <input type="radio" id="task-priority" name="task_priority" value="medium">
-        <label for="medium">Medium</label><br>
-        <input type="radio" id="task-priority" name="task_priority" value="high">
-        <label for="high">High</label>
-      </div>
-      <div>
-        <div class="form-group">
-          <label for="task priority">Task Due Day:</label>
-          <input class="form-input" type="date" id="task-new-date" name="task priority" />
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="task priority">Task Due Time:</label>
-        <input class="form-input" type="time" id="task-new-time" name="task priority" />
-      </div>
-  </div>
-  <div class="form-group">
-    <button type="submit" class="btn btn-primary">Create Task</button>
-  </div>
-  </form>
-  <!--  Future expansion
-      <div class="form-group">
-        <label for="task-assign">Task Assignment:</label>
-        <textarea class="form-input" id="task-desc" name="task-desc"></textarea>
-      </div>
--->
+    </form>
 </div>
 
 {{#if user.tasks.length}}
@@ -90,5 +69,5 @@
 {{!--
 <script src="/js/profile.js"></script> --}}
 <script src="/js/task-add.js"></script>
-<script src="/js/task-edit.js"></script>
-<script src="/js/task-delete.js"></script>
+{{!-- <script src="/js/task-edit.js"></script>
+<script src="/js/task-delete.js"></script> --}}
