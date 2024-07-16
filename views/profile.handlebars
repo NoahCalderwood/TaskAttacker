@@ -49,17 +49,19 @@
 </div>
 
 {{#if user.tasks.length}}
-<div class="col-md-6 project-list">
+<div class="col-md-6 project-list flex flex-col justify-center items-center">
   <h3>Current Tasks:</h3>
 
   {{#each user.tasks as |task|}}
   <div class="row mb-2">
-    <div class="col-md-8">
-      <h4><a href="/{{task.id}}">{{task.task_name}}</a></h4>
+
+    <div class="col-md-8 justify-center items-center">
+      <h4><class="col-md-8 justify-center items-center" a href="/homepage/{{task.id}}">{{task.task_name}}</a></h4>
     </div>
-    <div class="p-2 content-center">
-      <button class="delete-task" class="btn btn-sm btn-danger" data-task-id="{{task.id}}">Delete
-        Task</button>
+    <div class="select select-bordered w-full max-w-xs mt-2 p-2 content-center justify-center items-center">
+      <a href="/task-edit/{{id}}" class="select select-bordered w-full max-w-xs mt-2 btn btn-warning justify-center items-center">Edit Task</a>
+      <button id="delete" class="btn btn-sm btn-danger justify-center items-center" data-id="{{task.id}}">Delete Task</button>
+
     </div>
   </div>
   {{/each}}
