@@ -33,8 +33,9 @@ router.get('/', withAuth, async (req, res) => {
                 {
                     model: Task,
                     attributes: ['task_time', 'id', 'task_name']
-                }
+                },
             ],
+            
         });
 
         // const tasks = taskData.map((task) => task.get({ plain: true }));
@@ -53,11 +54,12 @@ router.get('/', withAuth, async (req, res) => {
 router.get('/task/:id', withAuth, async (req, res) => {
     try {
         const taskData = await Task.findByPk(req.params.id, {
+            order: [['task_time', 'ASC']],
             include: [
                 {
                     model: User,
                     attributes: ['name']
-                }
+                },
             ],
         });
 
@@ -155,7 +157,7 @@ router.get('/profile', withAuth, async (req, res) => {
                     model: Task,
                     attributes: ['task_time', 'id', 'task_name']
                 }
-            ],
+            ]
         });
 
         // const tasks = taskData.map((task) => task.get({ plain: true }));
