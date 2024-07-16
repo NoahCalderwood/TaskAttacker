@@ -74,6 +74,30 @@ router.get('/homepage', withAuth, async (req, res) => {
     }
 });
 
+router.get('/profile', withAuth, async (req, res) => {
+    try {
+        const taskData = await Task.findAll({
+            where: { user_id: req.session.user_id },
+            include: [
+                {
+                    model: User,
+                    attributes: ['name']
+                }
+            ],
+        });
+
+        const tasks = taskData.map((task) => task.get({ plain: true }));
+
+        res.render('profile', {
+            tasks,
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        console.error(err)
+        res.status(500).json(err);
+    }
+});
+
 // Redirect the request to another route if user logged in
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
